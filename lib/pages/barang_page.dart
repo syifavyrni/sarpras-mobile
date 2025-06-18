@@ -29,12 +29,12 @@ class _BarangPageState extends State<BarangPage> {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.indigo[800],
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey[50],
-        elevation: 0,
+        backgroundColor: Colors.blue[700],
+        elevation: 2,
       ),
       body: FutureBuilder<List<Barang>>(
         future: _barangFuture,
@@ -79,7 +79,8 @@ class _BarangPageState extends State<BarangPage> {
                       borderRadius: BorderRadius.circular(8),
                       image: barang.imageUrl != null
                           ? DecorationImage(
-                              image: NetworkImage('http://127.0.0.1:8000${barang.imageUrl!}'),
+                              image: NetworkImage(
+                                  'http://127.0.0.1:8000${barang.imageUrl!}'),
                               fit: BoxFit.cover,
                             )
                           : null,
@@ -108,10 +109,6 @@ class _BarangPageState extends State<BarangPage> {
                       Text('Stok: ${barang.stockBarang}'),
                     ],
                   ),
-                  trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.grey),
-                  onTap: () {
-                    // Tambahkan navigasi ke detail jika perlu
-                  },
                 ),
               );
             },

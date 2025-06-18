@@ -15,6 +15,9 @@ class BottomNavbar extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: Colors.blue[700],
+      unselectedItemColor: Colors.grey[600],
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.inventory),
@@ -25,8 +28,16 @@ class BottomNavbar extends StatelessWidget {
           label: 'Peminjaman',
         ),
         BottomNavigationBarItem(
+          icon: Icon(Icons.assignment_return),
+          label: 'Pengembalian',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.list_alt),
+          label: 'Riwayat',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Profil',
+          label: 'Profile',
         ),
       ],
     );

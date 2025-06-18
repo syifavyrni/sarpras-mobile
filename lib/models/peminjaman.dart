@@ -5,15 +5,17 @@ class Peminjaman {
   final int id;
   final String peminjam;
   final int barangId;
+  final int jumlahPinjam;
   final DateTime tglDipinjam;
   final DateTime tglKembali;
   final String status;
-  final Barang? barang; // Optional, jika relasi dipakai
-
+  final Barang? barang; 
+  
   Peminjaman({
     required this.id,
     required this.peminjam,
     required this.barangId,
+    required this.jumlahPinjam,
     required this.tglDipinjam,
     required this.tglKembali,
     required this.status,
@@ -25,6 +27,7 @@ class Peminjaman {
       id: json['id'],
       peminjam: json['peminjam'],
       barangId: int.parse(json['barang_id'].toString()),
+      jumlahPinjam: int.parse(json['jumlah_pinjam'].toString()),
       tglDipinjam: DateTime.parse(json['tgl_dipinjam']),
       tglKembali: DateTime.parse(json['tgl_kembali']),
       status: json['status'] ?? 'Pending',
@@ -39,6 +42,7 @@ class Peminjaman {
       'id': id,
       'peminjam': peminjam,
       'barang_id': barangId,
+      'jumlah_pinjam': jumlahPinjam,
       'tgl_dipinjam': dateFormat.format(tglDipinjam),
       'tgl_kembali': dateFormat.format(tglKembali),
       'status': status,

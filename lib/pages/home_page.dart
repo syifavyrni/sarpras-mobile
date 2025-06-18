@@ -3,7 +3,10 @@ import 'login_page.dart';
 import '../service/auth_service.dart';
 import '../widgets/bottom_navbar.dart';
 import 'barang_page.dart';
-import 'peminjaman_page.dart';
+import 'package:sarpras/pages/peminjaman_page.dart';
+import 'pengembalian_page.dart';
+import 'pengembalian_list_page.dart';
+import 'profile_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,26 +17,12 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
   final _authService = AuthService();
 
-  void _logout() {
-    _authService.logout();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => LoginPage()),
-    );
-  }
-
   final List<Widget> _pages = [
     BarangPage(),
-    Center(
-      child: Text(
-        'Halaman Profil Anda',
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: Colors.indigo[800],
-        ),
-      ),
-    ),
+    FormPeminjaman(),
+    FormPengembalian(),
+    PengembalianListPage(),
+    ProfilePage(),
   ];
 
   @override
@@ -42,23 +31,17 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
         title: Text(
-          'Aplikasi Saya',
+          'Sarpras Mobile',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.indigo[800],
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey[50],
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: _logout,
-            icon: Icon(Icons.logout, color: Colors.indigo[800]),
-            tooltip: 'Logout',
-          ),
-        ],
+        backgroundColor: Colors.blue[700],
+        elevation: 2,
+        shadowColor: Colors.blue.withOpacity(0.3),
       ),
       body: _pages[_index],
       bottomNavigationBar: BottomNavbar(
